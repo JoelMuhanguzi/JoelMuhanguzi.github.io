@@ -19,10 +19,28 @@
     --text2: #9ab89a;
     --text3: #5a7a5a;
     --gold: #fbbf24;
+    --nav-bg: rgba(10,14,11,0.88);
     --mono: 'DM Mono', monospace;
     --serif: 'Lora', serif;
     --sans: 'Syne', sans-serif;
   }
+
+  :root[data-theme="light"] {
+    --bg: #f5f7f5;
+    --bg2: #eef2ee;
+    --card: #ffffff;
+    --border: #d4e0d4;
+    --accent: #16a34a;
+    --accent2: #15803d;
+    --accent3: #bbf7d0;
+    --text: #111c12;
+    --text2: #3d5c3f;
+    --text3: #7a9e7c;
+    --gold: #d97706;
+    --nav-bg: rgba(245,247,245,0.92);
+  }
+
+  *, *::before, *::after { transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease; }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -58,9 +76,37 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem 3rem;
-    background: rgba(10,14,11,0.85);
+    background: var(--nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
+  }
+
+  .theme-toggle {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    width: 42px;
+    height: 22px;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: background 0.25s, border-color 0.25s;
+  }
+
+  .theme-toggle::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform 0.25s, background 0.25s;
+  }
+
+  :root[data-theme="light"] .theme-toggle::after {
+    transform: translateX(20px);
   }
 
   .nav-logo {
@@ -154,9 +200,9 @@
   }
 
   .hero h1 {
-    font-size: clamp(2.4rem, 4vw, 3.8rem);
-    font-weight: 800;
-    line-height: 1.05;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.1;
     letter-spacing: -0.02em;
     margin-bottom: 0.5rem;
   }
@@ -204,10 +250,12 @@
 
   .btn-primary {
     background: var(--accent);
-    color: #0a0e0b;
+    color: #fff;
     font-weight: 500;
     border: 1px solid var(--accent);
   }
+
+  :root[data-theme="dark"] .btn-primary { color: #0a0e0b; }
 
   .btn-primary:hover {
     background: var(--accent2);
@@ -796,6 +844,7 @@
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle theme"></button>
 </nav>
 
 <!-- HERO -->
@@ -1030,6 +1079,12 @@
   <p class="section-label reveal">Academic Background</p>
   <h2 class="section-title reveal">Education</h2>
   <div class="edu-grid">
+    <div class="edu-card reveal" data-year="PhD">
+      <p class="edu-degree">PhD Computer Science</p>
+      <p class="edu-spec">Edge-Optimized ML for Urban Sensing</p>
+      <p class="edu-uni">Makerere University, Kampala</p>
+      <p class="edu-period">In Progress</p>
+    </div>
     <div class="edu-card reveal" data-year="2024">
       <p class="edu-degree">MSc Computer Science</p>
       <p class="edu-spec">AI &amp; Data Science</p>
@@ -1041,12 +1096,6 @@
       <p class="edu-spec">Hardware &amp; Software Systems</p>
       <p class="edu-uni">Makerere University, Kampala</p>
       <p class="edu-period">2015 – 2020</p>
-    </div>
-    <div class="edu-card reveal" data-year="PhD">
-      <p class="edu-degree">PhD Computer Science</p>
-      <p class="edu-spec">Edge-Optimized ML for Urban Sensing</p>
-      <p class="edu-uni">Makerere University, Kampala</p>
-      <p class="edu-period">In Progress</p>
     </div>
   </div>
 </section>
@@ -1193,6 +1242,19 @@
 </footer>
 
 <script>
+  // Theme toggle
+  const root = document.documentElement;
+  const btn = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('theme') || 'dark';
+  if (saved === 'light') root.setAttribute('data-theme', 'light');
+
+  btn.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
