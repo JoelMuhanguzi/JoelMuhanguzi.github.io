@@ -4,8 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joel Tibabwetiza Muhanguzi — Embedded & ML Engineer</title>
+<meta name="description" content="Portfolio and academic profile of Joel Tibabwetiza Muhanguzi — Embedded Systems, Edge AI, and Environmental Sensing Researcher based in Kampala, Uganda.">
+
+<!-- Open Graph / Social Meta -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Joel Tibabwetiza Muhanguzi — Embedded & ML Engineer">
+<meta property="og:description" content="Building intelligent systems at the intersection of constrained hardware and real-world sensing.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Lora:ital,wght@0,400;0,500;1,400&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
   :root {
     --bg: #0a0e0b;
@@ -19,7 +28,7 @@
     --text2: #9ab89a;
     --text3: #5a7a5a;
     --gold: #fbbf24;
-    --nav-bg: rgba(10,14,11,0.88);
+    --nav-bg: rgba(10, 14, 11, 0.88);
     --mono: 'DM Mono', monospace;
     --serif: 'Lora', serif;
     --sans: 'Syne', sans-serif;
@@ -37,14 +46,20 @@
     --text2: #3d5c3f;
     --text3: #7a9e7c;
     --gold: #d97706;
-    --nav-bg: rgba(245,247,245,0.92);
+    --nav-bg: rgba(245, 247, 245, 0.92);
   }
 
-  *, *::before, *::after { transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease; }
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
 
   body {
     background: var(--bg);
@@ -65,6 +80,12 @@
     opacity: 0.6;
   }
 
+  /* Focus ring for accessibility */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
   /* ─── NAV ─────────────────────────────────────── */
   nav {
     position: fixed;
@@ -81,40 +102,19 @@
     border-bottom: 1px solid var(--border);
   }
 
-  .theme-toggle {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    width: 42px;
-    height: 22px;
-    cursor: pointer;
-    position: relative;
-    flex-shrink: 0;
-    transition: background 0.25s, border-color 0.25s;
-  }
-
-  .theme-toggle::after {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--accent);
-    transition: transform 0.25s, background 0.25s;
-  }
-
-  :root[data-theme="light"] .theme-toggle::after {
-    transform: translateX(20px);
-  }
-
   .nav-logo {
     font-family: var(--mono);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 500;
     color: var(--accent);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-decoration: none;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
   }
 
   .nav-links {
@@ -125,7 +125,7 @@
 
   .nav-links a {
     font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--text2);
     text-decoration: none;
     letter-spacing: 0.08em;
@@ -135,24 +135,61 @@
 
   .nav-links a:hover { color: var(--accent); }
 
+  .theme-toggle {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    width: 44px;
+    height: 24px;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .theme-toggle::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  :root[data-theme="light"] .theme-toggle::after {
+    transform: translateX(20px);
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+
   /* ─── HERO ─────────────────────────────────────── */
   .hero {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
     align-items: center;
     padding: 0 3rem;
     padding-top: 5rem;
     position: relative;
     overflow: hidden;
+    gap: 2rem;
   }
 
   .hero-bg {
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(74,222,128,0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(22,101,52,0.12) 0%, transparent 60%);
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(74,222,128,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(22,101,52,0.15) 0%, transparent 60%);
   }
 
   .hero-grid {
@@ -161,13 +198,15 @@
     background-image:
       linear-gradient(rgba(74,222,128,0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(74,222,128,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
+    background-size: 50px 50px;
     mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
   }
 
   .hero-content {
     position: relative;
     z-index: 2;
+    max-width: 620px;
   }
 
   .hero-tag {
@@ -181,8 +220,9 @@
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     padding: 0.4rem 0.8rem;
+    background: rgba(74,222,128,0.05);
     border: 1px solid rgba(74,222,128,0.3);
-    border-radius: 2px;
+    border-radius: 4px;
   }
 
   .hero-tag::before {
@@ -195,16 +235,16 @@
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
   }
 
   .hero h1 {
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
   }
 
   .hero h1 .accent { color: var(--accent); }
@@ -212,18 +252,18 @@
   .hero-subtitle {
     font-family: var(--serif);
     font-style: italic;
-    font-size: 1.15rem;
+    font-size: 1.18rem;
     color: var(--text2);
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    line-height: 1.55;
   }
 
   .hero-location {
     font-family: var(--mono);
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     color: var(--text3);
-    letter-spacing: 0.06em;
-    margin-bottom: 2.5rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 2.2rem;
   }
 
   .hero-location span { color: var(--accent2); }
@@ -238,29 +278,31 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.7rem 1.4rem;
+    padding: 0.75rem 1.5rem;
     font-family: var(--mono);
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     letter-spacing: 0.06em;
     text-decoration: none;
-    border-radius: 3px;
-    transition: all 0.2s;
+    border-radius: 4px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
   }
 
   .btn-primary {
     background: var(--accent);
-    color: #fff;
-    font-weight: 500;
+    color: #0a0e0b;
+    font-weight: 600;
     border: 1px solid var(--accent);
   }
 
-  :root[data-theme="dark"] .btn-primary { color: #0a0e0b; }
+  :root[data-theme="light"] .btn-primary {
+    color: #ffffff;
+  }
 
   .btn-primary:hover {
     background: var(--accent2);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 20px rgba(74,222,128,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74,222,128,0.25);
   }
 
   .btn-outline {
@@ -272,15 +314,15 @@
   .btn-outline:hover {
     border-color: var(--accent);
     color: var(--accent);
+    transform: translateY(-2px);
   }
 
-  /* Hero visual side */
+  /* Hero Terminal */
   .hero-visual {
     position: relative;
     z-index: 2;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
   }
 
   .terminal-card {
@@ -288,14 +330,14 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     width: 100%;
-    max-width: 440px;
+    max-width: 460px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(74,222,128,0.05);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(74,222,128,0.05);
   }
 
   .terminal-header {
-    background: #0d1410;
-    padding: 0.7rem 1rem;
+    background: var(--bg2);
+    padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -309,18 +351,18 @@
 
   .terminal-title {
     font-family: var(--mono);
-    font-size: 0.68rem;
+    font-size: 0.7rem;
     color: var(--text3);
     margin-left: auto;
     margin-right: auto;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
   }
 
   .terminal-body {
     padding: 1.25rem 1.5rem;
     font-family: var(--mono);
     font-size: 0.78rem;
-    line-height: 2;
+    line-height: 1.8;
   }
 
   .t-prompt { color: var(--accent); }
@@ -330,8 +372,8 @@
   .t-val { color: var(--accent2); }
   .t-cursor {
     display: inline-block;
-    width: 8px;
-    height: 1em;
+    width: 7px;
+    height: 1.1em;
     background: var(--accent);
     animation: blink 1.1s step-end infinite;
     vertical-align: text-bottom;
@@ -342,7 +384,7 @@
 
   /* ─── SECTIONS ─────────────────────────────────── */
   section {
-    padding: 5rem 3rem;
+    padding: 5.5rem 3rem;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -368,7 +410,7 @@
   }
 
   .section-title {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-size: clamp(1.75rem, 3vw, 2.3rem);
     font-weight: 700;
     letter-spacing: -0.02em;
     margin-bottom: 3rem;
@@ -378,18 +420,18 @@
   /* ─── RESEARCH ─────────────────────────────────── */
   .research-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
   }
 
   .research-card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 1.75rem;
+    padding: 2rem;
     position: relative;
     overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
+    transition: border-color 0.25s, transform 0.25s;
   }
 
   .research-card::before {
@@ -400,27 +442,31 @@
     width: 3px;
     height: 100%;
     background: var(--accent3);
-    transition: background 0.2s;
+    transition: background 0.25s;
   }
 
-  .research-card:hover { border-color: rgba(74,222,128,0.2); transform: translateY(-2px); }
+  .research-card:hover { 
+    border-color: rgba(74,222,128,0.3); 
+    transform: translateY(-3px); 
+  }
   .research-card:hover::before { background: var(--accent); }
 
   .research-icon {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+    display: inline-block;
+    color: var(--accent);
   }
 
   .research-card h3 {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
     color: var(--text);
   }
 
   .research-card p {
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     color: var(--text2);
     line-height: 1.6;
   }
@@ -448,14 +494,14 @@
     border-bottom: 1px solid var(--border);
   }
 
-  .timeline-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
   .timeline-dot {
     position: absolute;
-    left: -2.4rem;
+    left: -2.35rem;
     top: 0.35rem;
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
     background: var(--accent3);
     border: 2px solid var(--accent);
@@ -467,57 +513,58 @@
     display: flex;
     align-items: baseline;
     gap: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     flex-wrap: wrap;
   }
 
   .timeline-role {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--text);
   }
 
   .timeline-org {
     font-family: var(--mono);
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     color: var(--accent2);
     letter-spacing: 0.04em;
   }
 
   .timeline-period {
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     color: var(--text3);
     margin-left: auto;
   }
 
   .timeline-loc {
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     color: var(--text3);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.85rem;
   }
 
   .timeline-bullets {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
   }
 
   .timeline-bullets li {
     font-size: 0.85rem;
     color: var(--text2);
-    padding-left: 1rem;
+    padding-left: 1.25rem;
     position: relative;
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
   .timeline-bullets li::before {
     content: '›';
     position: absolute;
     left: 0;
-    color: var(--accent3);
+    color: var(--accent);
+    font-weight: bold;
   }
 
   /* ─── PUBLICATIONS ──────────────────────────────── */
@@ -531,24 +578,23 @@
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 1.5rem 1.75rem;
-    transition: border-color 0.2s;
-    position: relative;
+    padding: 1.75rem;
+    transition: border-color 0.25s;
   }
 
-  .pub-item:hover { border-color: rgba(74,222,128,0.25); }
+  .pub-item:hover { border-color: rgba(74,222,128,0.3); }
 
   .pub-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
     font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 0.2rem 0.55rem;
-    border-radius: 2px;
-    margin-bottom: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+    margin-bottom: 0.85rem;
   }
 
   .badge-conf { background: rgba(74,222,128,0.1); color: var(--accent2); border: 1px solid rgba(74,222,128,0.2); }
@@ -556,53 +602,58 @@
   .badge-workshop { background: rgba(167,139,250,0.1); color: #c4b5fd; border: 1px solid rgba(167,139,250,0.2); }
 
   .pub-title {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--text);
     margin-bottom: 0.4rem;
-    line-height: 1.4;
+    line-height: 1.45;
   }
 
   .pub-authors {
     font-family: var(--serif);
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--text3);
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.4rem;
   }
 
   .pub-venue {
     font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--text2);
+  }
+
+  .pub-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.75rem;
   }
 
   .pub-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.35rem;
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--accent);
     text-decoration: none;
-    margin-top: 0.6rem;
     transition: color 0.2s;
   }
 
-  .pub-link:hover { color: var(--accent2); }
+  .pub-link:hover { color: var(--accent2); text-decoration: underline; }
 
   /* ─── EDUCATION ────────────────────────────────── */
   .edu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
 
   .edu-card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 1.75rem;
+    padding: 2rem;
     position: relative;
     overflow: hidden;
   }
@@ -610,62 +661,62 @@
   .edu-card::after {
     content: attr(data-year);
     position: absolute;
-    bottom: -0.5rem;
+    bottom: -0.8rem;
     right: 1rem;
     font-family: var(--sans);
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 800;
-    color: rgba(74,222,128,0.04);
+    color: rgba(74,222,128,0.03);
     line-height: 1;
     pointer-events: none;
   }
 
   .edu-degree {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.35rem;
   }
 
   .edu-spec {
     font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--accent2);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
     letter-spacing: 0.04em;
   }
 
   .edu-uni {
     font-family: var(--serif);
     font-style: italic;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: var(--text2);
   }
 
   .edu-period {
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     color: var(--text3);
-    margin-top: 0.5rem;
+    margin-top: 0.6rem;
   }
 
   /* ─── SKILLS ────────────────────────────────────── */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
   }
 
   .skill-group {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 1.5rem;
+    padding: 1.75rem;
   }
 
   .skill-group-title {
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     color: var(--accent);
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -677,36 +728,36 @@
   .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: 0.5rem;
   }
 
   .skill-tag {
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     color: var(--text2);
     background: rgba(74,222,128,0.05);
-    border: 1px solid rgba(74,222,128,0.12);
-    padding: 0.2rem 0.55rem;
-    border-radius: 2px;
-    letter-spacing: 0.03em;
+    border: 1px solid rgba(74,222,128,0.15);
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+    letter-spacing: 0.02em;
   }
 
   /* ─── TEACHING ──────────────────────────────────── */
   .teaching-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
 
   .teaching-card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 1.5rem;
+    padding: 1.75rem;
   }
 
   .teaching-course {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--text);
     margin-bottom: 0.25rem;
@@ -714,16 +765,16 @@
 
   .teaching-audience {
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     color: var(--accent2);
     letter-spacing: 0.04em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
   }
 
   .teaching-desc {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     color: var(--text2);
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
   /* ─── CONTACT ───────────────────────────────────── */
@@ -731,7 +782,7 @@
     background: var(--card);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
-    padding: 5rem 3rem;
+    padding: 5.5rem 3rem;
   }
 
   .contact-inner {
@@ -746,43 +797,45 @@
   .contact-links {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.85rem;
   }
 
   .contact-link {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.25rem;
     text-decoration: none;
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1.15rem;
     border: 1px solid var(--border);
     border-radius: 4px;
-    transition: border-color 0.2s, background 0.2s;
+    transition: all 0.2s ease;
     background: var(--bg2);
   }
 
   .contact-link:hover {
-    border-color: rgba(74,222,128,0.3);
-    background: rgba(74,222,128,0.03);
+    border-color: rgba(74,222,128,0.4);
+    background: rgba(74,222,128,0.04);
+    transform: translateX(4px);
   }
 
   .contact-link-icon {
     font-family: var(--mono);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--accent);
-    width: 5rem;
+    width: 6rem;
     flex-shrink: 0;
+    text-transform: uppercase;
   }
 
   .contact-link-val {
     font-family: var(--mono);
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     color: var(--text2);
   }
 
   /* ─── FOOTER ────────────────────────────────────── */
   footer {
-    padding: 2rem 3rem;
+    padding: 2.5rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -792,7 +845,7 @@
 
   footer p {
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     color: var(--text3);
     letter-spacing: 0.04em;
   }
@@ -803,7 +856,7 @@
   .reveal {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal.visible {
@@ -811,428 +864,462 @@
     transform: translateY(0);
   }
 
-  /* ─── RESPONSIVE ────────────────────────────────── */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 3rem; }
-    .hero-visual { display: none; }
-    section { padding: 3.5rem 1.5rem; }
-    .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .contact-section { padding: 3.5rem 1.5rem; }
-    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; }
-  }
-
-  /* Divider */
+  /* ─── DIVIDER ──────────────────────────────────── */
   .divider {
     height: 1px;
     background: linear-gradient(to right, transparent, var(--border), transparent);
     max-width: 1200px;
     margin: 0 auto;
   }
+
+  /* ─── RESPONSIVE ────────────────────────────────── */
+  @media (max-width: 860px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+      gap: 1.25rem;
+    }
+    .nav-links.open { display: flex; }
+    .mobile-menu-btn { display: block; }
+    
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 6.5rem 1.5rem 3rem;
+      gap: 3rem;
+    }
+    .hero-visual { justify-content: center; }
+    section { padding: 4rem 1.5rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-section { padding: 4rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.75rem; text-align: center; }
+  }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">joel.t.muhanguzi</a>
-  <ul class="nav-links">
-    <li><a href="#research">Research</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle theme"></button>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-
-  <div class="hero-content">
-    <div class="hero-tag">Embedded AI · Edge ML · NLP</div>
-    <h1>Joel <span class="accent">Tibabwetiza</span><br>Muhanguzi</h1>
-    <p class="hero-subtitle">Building intelligent systems at the intersection<br>of constrained hardware and real-world sensing.</p>
-    <p class="hero-location">📍 <span>Kampala, Uganda</span> · Makerere University · Sunbird AI</p>
-    <div class="hero-cta">
-      <a href="#publications" class="btn btn-primary">View Publications</a>
-      <a href="#contact" class="btn btn-outline">Get in Touch</a>
-    </div>
-  </div>
-
-  <div class="hero-visual">
-    <div class="terminal-card">
-      <div class="terminal-header">
-        <span class="dot dot-r"></span>
-        <span class="dot dot-y"></span>
-        <span class="dot dot-g"></span>
-        <span class="terminal-title">about.json</span>
-      </div>
-      <div class="terminal-body">
-        <div><span class="t-prompt">$</span> <span class="t-cmd">cat profile.json</span></div>
-        <div class="t-out">{</div>
-        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Joel T. Muhanguzi"</span>,</div>
-        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-val">"Embedded &amp; ML Engineer"</span>,</div>
-        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"affiliation"</span>: [</div>
-        <div class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Sunbird AI"</span>,</div>
-        <div class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Makerere University"</span></div>
-        <div class="t-out">&nbsp;&nbsp;],</div>
-        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"focus"</span>: <span class="t-val">"Edge AI for Africa"</span>,</div>
-        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"phd"</span>: <span class="t-val">"In Progress (CS)"</span>,</div>
-        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"pubs"</span>: <span class="t-val">6</span>,</div>
-        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val">"open_to_collab"</span></div>
-        <div class="t-out">}</div>
-        <div><span class="t-prompt">$</span> <span class="t-cursor"></span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- RESEARCH INTERESTS -->
-<section id="research">
-  <p class="section-label reveal">Research Interests</p>
-  <h2 class="section-title reveal">What I Work On</h2>
-  <div class="research-grid">
-    <div class="research-card reveal">
-      <span class="research-icon"></span>
-      <h3>Urban Noise &amp; Bioacoustics</h3>
-      <p>Deploying edge ML models for urban noise classification and wildlife bioacoustic sensing in constrained environments.</p>
-    </div>
-    <div class="research-card reveal">
-      <span class="research-icon"></span>
-      <h3>Environmental Sensing</h3>
-      <p>Air quality monitoring and biodiversity conservation through solar-powered IoT nodes and on-device inference.</p>
-    </div>
-    <div class="research-card reveal">
-      <span class="research-icon"></span>
-      <h3>Efficient Edge AI</h3>
-      <p>Model quantization, pruning, and TinyML optimization for deployment on memory- and power-constrained hardware.</p>
-    </div>
-    <div class="research-card reveal">
-      <span class="research-icon"></span>
-      <h3>African Language NLP</h3>
-      <p>Low-resource multilingual NLP for African languages — translation pipelines, LLM finetuning, synthetic data generation.</p>
-    </div>
-    <div class="research-card reveal">
-      <span class="research-icon"></span>
-      <h3>Citizen Feedback Systems</h3>
-      <p>AI-driven voice feedback devices for assessing public service quality in local government and public institutions.</p>
-    </div>
-    <div class="research-card reveal">
-      <span class="research-icon"></span>
-      <h3>IoT Hardware Design</h3>
-      <p>PCB design, solar energy harvesting circuits, and firmware development for long-running remote sensing deployments.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <p class="section-label reveal">Professional Experience</p>
-  <h2 class="section-title reveal">Work History</h2>
-  <div class="timeline">
-
-    <div class="timeline-item current reveal">
-      <div class="timeline-dot"></div>
-      <div class="timeline-meta">
-        <span class="timeline-role">Hardware Development Lead</span>
-        <span class="timeline-org">Sunbird AI</span>
-        <span class="timeline-period">May 2021 – Present</span>
-      </div>
-      <p class="timeline-loc">📍 Kampala, Uganda</p>
-      <ul class="timeline-bullets">
-        <li>Developed ML models for noise pollution sensing and classification</li>
-        <li>Published geo-tagged noise datasets for ML applications</li>
-        <li>Led AI-driven voice feedback systems for assessing public service quality</li>
-        <li>Engineered efficient solar-powered IoT hardware for field deployments</li>
+<header>
+  <nav aria-label="Main Navigation">
+    <a href="#" class="nav-logo">joel.t.muhanguzi</a>
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#research">Research</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle light or dark mode"></button>
+      <button class="mobile-menu-btn" id="menuToggle" aria-label="Open navigation menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
     </div>
+  </nav>
+</header>
 
-    <div class="timeline-item current reveal">
-      <div class="timeline-dot"></div>
-      <div class="timeline-meta">
-        <span class="timeline-role">Part-Time Lecturer</span>
-        <span class="timeline-org">Makerere University</span>
-        <span class="timeline-period">May 2021 – Present</span>
-      </div>
-      <p class="timeline-loc">📍 Kampala, Uganda · College of Computing &amp; Information Sciences</p>
-      <ul class="timeline-bullets">
-        <li>Embedded Systems — 1st year recess Computer Science students</li>
-        <li>Embedded Systems II — 3rd year Software Engineering students</li>
-        <li>Supervises final year project implementations for Software Engineering</li>
-      </ul>
-    </div>
+<main>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
 
-    <div class="timeline-item current reveal">
-      <div class="timeline-dot"></div>
-      <div class="timeline-meta">
-        <span class="timeline-role">Data Science Africa Fellow</span>
-        <span class="timeline-org">DSAIL, DeKUT</span>
-        <span class="timeline-period">November 2024 – 2025</span>
-      </div>
-      <p class="timeline-loc">📍 Nyeri, Kenya · Center for Data Science &amp; Artificial Intelligence</p>
-      <ul class="timeline-bullets">
-        <li>Optimized Raspbian software for efficient power consumption on bioacoustic sensors</li>
-        <li>Trained, quantized, and deployed bird species classifier at Dedan Kimathi University Wildlife Conservancy</li>
-      </ul>
-    </div>
-
-    <div class="timeline-item current reveal">
-      <div class="timeline-dot"></div>
-      <div class="timeline-meta">
-        <span class="timeline-role"> Research Fellow</span>
-        <span class="timeline-org">AirQount · Makerere</span>
-        <span class="timeline-period">October 2023 – 2024</span>
-      </div>
-      <p class="timeline-loc">📍 Kampala, Uganda</p>
-      <ul class="timeline-bullets">
-        <li>Deployed embedded systems to monitor air quality through mobile vehicular image/video data</li>
-        <li>Integrated AI models for vehicle classification and emission prediction on the edge</li>
-      </ul>
-    </div>
-
-    <div class="timeline-item reveal">
-      <div class="timeline-dot"></div>
-      <div class="timeline-meta">
-        <span class="timeline-role">Graduate Research Assistant</span>
-        <span class="timeline-org">iLabs@MAK</span>
-        <span class="timeline-period">July 2019 – November 2020</span>
-      </div>
-      <p class="timeline-loc">📍 Makerere University, Kampala</p>
-      <ul class="timeline-bullets">
-        <li>Organized robotics competitions and supervised student projects</li>
-        <li>Implemented internet-enabled laboratory software solutions</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PUBLICATIONS -->
-<section id="publications">
-  <p class="section-label reveal">Scholarly Work</p>
-  <h2 class="section-title reveal">Publications</h2>
-  <div class="pub-list">
-
-    <div class="pub-item reveal">
-      <span class="pub-badge badge-journal">Scientific Data · 2026</span>
-      <p class="pub-title">Noise mapping and ambient sound recordings of the urban environment in Uganda</p>
-      <p class="pub-authors">Nsumba, S., Muhanguzi, T., Ouma, E. N., Sekalala, I., Bainomugisha, E., Mwebaze, E., &amp; Quinn, J.</p>
-      <p class="pub-venue">Scientific Data, 2026</p>
-      <a href="https://www.nature.com/articles/s41597-026-06658-w" target="_blank" rel="noopener" class="pub-link">↗ [Scientific Data](https://www.nature.com)</a>
-    </div>
-
-    <div class="pub-item reveal">
-      <span class="pub-badge badge-conf">PMLR · 2026</span>
-      <p class="pub-title">Sunflower: A New Approach to Expanding Coverage of African Languages in Large Language Models</p>
-      <p class="pub-authors">Akera, B., Ouma, E.N., Yiga, G., Walukagga, P., Natukunda, P., Saaka, T., Nsumba, S., … Muhanguzi, J.T., et al.</p>
-      <p class="pub-venue">Proceedings of the AI for African Languages Conference 2025 · PMLR 314:1–20</p>
-      <a href="https://proceedings.mlr.press/v314/akera26a.html" target="_blank" rel="noopener" class="pub-link">↗ proceedings.mlr.press</a>
-    </div>
-
-    <div class="pub-item reveal">
-      <span class="pub-badge badge-conf">PMLR · 2026</span>
-      <p class="pub-title">Optimisation of a Raspberry Pi-based Bioacoustic Sensor for Data Collection</p>
-      <p class="pub-authors">Muhanguzi, J., Kiarie, G., Maina, C. &amp; Mwebaze, E.</p>
-      <p class="pub-venue">DLI 2025 Research Track · PMLR 302:1–9</p>
-      <a href="https://proceedings.mlr.press/v302/muhanguzi26a.html" target="_blank" rel="noopener" class="pub-link">↗ proceedings.mlr.press</a>
-    </div>
-
-    <div class="pub-item reveal">
-      <span class="pub-badge badge-workshop">NeurIPS Workshop · 2024</span>
-      <p class="pub-title">Acoustic Environmental Sensing on the Edge</p>
-      <p class="pub-authors">Tibabwetiza, J. M.</p>
-      <p class="pub-venue">NeurIPS 2024 Workshop</p>
-      <a href="https://neurips.cc/virtual/2024/108272" target="_blank" rel="noopener" class="pub-link">↗ neurips.cc</a>
-    </div>
-
-    <div class="pub-item reveal">
-      <span class="pub-badge badge-workshop">Black in AI · 2023</span>
-      <p class="pub-title">An Urban Noise Classification Model for Edge Devices</p>
-      <p class="pub-authors">Tibabwetiza, J. M.</p>
-      <p class="pub-venue">Black in AI Workshop 2023</p>
-      <a href="https://www.blackinai.org/event/2023-black-in-ai-workshop" target="_blank" rel="noopener" class="pub-link">↗ blackinai.org</a>
-    </div>
-
-    <div class="pub-item reveal">
-      <span class="pub-badge badge-conf">IST-Africa · 2020</span>
-      <p class="pub-title">Development of an Open Source Desktop Application Client Software for Running Internet Enabled Laboratories</p>
-      <p class="pub-authors">Tibabwetiza, J. M., &amp; Lating, P. O.</p>
-      <p class="pub-venue">IST-Africa Conference (IST-Africa), Kampala, Uganda, pp. 1–6. IEEE.</p>
-      <a href="https://ieeexplore.ieee.org/document/9144022" target="_blank" rel="noopener" class="pub-link">↗ [ieeexplore.ieee.org](https://ieeexplore.ieee.org)</a>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- EDUCATION -->
-<section id="education">
-  <p class="section-label reveal">Academic Background</p>
-  <h2 class="section-title reveal">Education</h2>
-  <div class="edu-grid">
-    <div class="edu-card reveal" data-year="PhD">
-      <p class="edu-degree">PhD Computer Science</p>
-      <p class="edu-spec">Edge-Optimized Mutimodal Machine Learning for Urban Sensing</p>
-      <p class="edu-uni">Makerere University, Kampala</p>
-      <p class="edu-period">In Progress</p>
-    </div>
-    <div class="edu-card reveal" data-year="2024">
-      <p class="edu-degree">MSc Computer Science</p>
-      <p class="edu-spec">AI &amp; Data Science</p>
-      <p class="edu-uni">Makerere University, Kampala</p>
-      <p class="edu-period">2022 – 2024</p>
-    </div>
-    <div class="edu-card reveal" data-year="2020">
-      <p class="edu-degree">BSc Computer Engineering</p>
-      <p class="edu-spec">Hardware &amp; Software Systems</p>
-      <p class="edu-uni">Makerere University, Kampala</p>
-      <p class="edu-period">2015 – 2020</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SKILLS -->
-<section id="skills">
-  <p class="section-label reveal">Technical Expertise</p>
-  <h2 class="section-title reveal">Skills</h2>
-  <div class="skills-grid">
-    <div class="skill-group reveal">
-      <p class="skill-group-title">Programming</p>
-      <div class="skill-tags">
-        <span class="skill-tag">C</span>
-        <span class="skill-tag">C++</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Arduino IDE</span>
-        <span class="skill-tag">Bash</span>
+    <div class="hero-content">
+      <div class="hero-tag">Embedded AI · Edge ML · Signal Processing</div>
+      <h1>Joel <span class="accent">Tibabwetiza</span><br>Muhanguzi</h1>
+      <p class="hero-subtitle">Building intelligent systems at the intersection<br>of constrained hardware and real-world sensing.</p>
+      <p class="hero-location">📍 <span>Kampala, Uganda</span> · Makerere University · Sunbird AI</p>
+      <div class="hero-cta">
+        <a href="#publications" class="btn btn-primary">View Publications</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
       </div>
     </div>
-    <div class="skill-group reveal">
-      <p class="skill-group-title">AI / ML</p>
-      <div class="skill-tags">
-        <span class="skill-tag">TensorFlow</span>
-        <span class="skill-tag">PyTorch</span>
-        <span class="skill-tag">LiteRT/TFLite</span>
-        <span class="skill-tag">Edge AI</span>
-        <span class="skill-tag">TinyML</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <p class="skill-group-title">Protocols &amp; Comms</p>
-      <div class="skill-tags">
-        <span class="skill-tag">GSM</span>
-        <span class="skill-tag">LTE</span>
-        <span class="skill-tag">LoRa</span>
-        <span class="skill-tag">BLE</span>
-        <span class="skill-tag">Wi-Fi</span>
-        <span class="skill-tag">UART / I2C</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <p class="skill-group-title">Hardware Design</p>
-      <div class="skill-tags">
-        <span class="skill-tag">PCB Design</span>
-        <span class="skill-tag">Solar Circuits</span>
-        <span class="skill-tag">3D Design</span>
-        <span class="skill-tag">Arduino, STM32, ESP32, Raspberry Pi</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <p class="skill-group-title">Platforms &amp; Cloud</p>
-      <div class="skill-tags">
-        <span class="skill-tag">Google Colab</span>
-        <span class="skill-tag">Vast.ai</span>
-        <span class="skill-tag">Azure</span>
-        <span class="skill-tag">Terraform</span>
-        <span class="skill-tag">Hugging Face</span>
-        <span class="skill-tag">FastAPI</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <p class="skill-group-title">Research Tools</p>
-      <div class="skill-tags">
-        <span class="skill-tag">Weights & Biases Platform</span>
-        <span class="skill-tag">LaTeX</span>
-        <span class="skill-tag">Streamlit</span>
+
+    <div class="hero-visual">
+      <div class="terminal-card">
+        <div class="terminal-header">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="terminal-title">about.json</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">cat profile.json</span></div>
+          <div class="t-out">{</div>
+          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Joel T. Muhanguzi"</span>,</div>
+          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-val">"Embedded &amp; ML Engineer"</span>,</div>
+          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"affiliation"</span>: [</div>
+          <div class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Sunbird AI"</span>,</div>
+          <div class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Makerere University"</span></div>
+          <div class="t-out">&nbsp;&nbsp;],</div>
+          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"focus"</span>: <span class="t-val">"Edge AI &amp; Urban Sensing"</span>,</div>
+          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"phd"</span>: <span class="t-val">"In Progress (CS)"</span>,</div>
+          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val">"open_to_collab"</span></div>
+          <div class="t-out">}</div>
+          <div><span class="t-prompt">$</span> <span class="t-cursor"></span></div>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<div class="divider"></div>
+  <div class="divider"></div>
 
-<!-- TEACHING -->
-<section id="teaching">
-  <p class="section-label reveal">Academia</p>
-  <h2 class="section-title reveal">Teaching</h2>
-  <p class="teaching-institution reveal">Makerere University · College of Computing and Information Sciences (CoCIS)</p>
-  <div class="teaching-cards">
-    <div class="teaching-card reveal">
-      <p class="teaching-course">Embedded Systems I</p>
-      <p class="teaching-audience">1st Year · Recess Semester · Computer Science</p>
-      <p class="teaching-desc">Foundations of embedded hardware and firmware development. Microcontroller interfacing, peripherals, and real-time concepts.</p>
+  <!-- RESEARCH INTERESTS -->
+  <section id="research">
+    <p class="section-label reveal">Research Interests</p>
+    <h2 class="section-title reveal">What I Work On</h2>
+    <div class="research-grid">
+      <div class="research-card reveal">
+        <span class="research-icon">🔊</span>
+        <h3>Urban Noise &amp; Bioacoustics</h3>
+        <p>Deploying edge ML models for urban noise classification and wildlife bioacoustic sensing in constrained environments.</p>
+      </div>
+      <div class="research-card reveal">
+        <span class="research-icon">🍃</span>
+        <h3>Environmental Sensing</h3>
+        <p>Air quality monitoring and biodiversity conservation through solar-powered IoT nodes and on-device inference.</p>
+      </div>
+      <div class="research-card reveal">
+        <span class="research-icon">⚡</span>
+        <h3>Efficient Edge AI</h3>
+        <p>Model quantization, pruning, and TinyML optimization for deployment on memory- and power-constrained hardware.</p>
+      </div>
+      <div class="research-card reveal">
+        <span class="research-icon">🌐</span>
+        <h3>African Language NLP</h3>
+        <p>Low-resource multilingual NLP for African languages — translation pipelines, LLM fine-tuning, and dataset curation.</p>
+      </div>
+      <div class="research-card reveal">
+        <span class="research-icon">🎙️</span>
+        <h3>Citizen Feedback Systems</h3>
+        <p>AI-driven voice feedback devices for assessing public service quality in local government and public institutions.</p>
+      </div>
+      <div class="research-card reveal">
+        <span class="research-icon">🛠️</span>
+        <h3>IoT Hardware Design</h3>
+        <p>PCB design, solar energy harvesting circuits, and firmware development for long-running remote sensing deployments.</p>
+      </div>
     </div>
-    <div class="teaching-card reveal">
-      <p class="teaching-course">Embedded Systems II</p>
-      <p class="teaching-audience">3rd Year · Semester 2 · Software Engineering</p>
-      <p class="teaching-desc">Advanced embedded programming, communication protocols, RTOS concepts, and IoT system integration.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label reveal">Professional Experience</p>
+    <h2 class="section-title reveal">Work History</h2>
+    <div class="timeline">
+
+      <div class="timeline-item current reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-role">Hardware Development Lead</span>
+          <span class="timeline-org">Sunbird AI</span>
+          <span class="timeline-period">May 2021 – Present</span>
+        </div>
+        <p class="timeline-loc">📍 Kampala, Uganda</p>
+        <ul class="timeline-bullets">
+          <li>Developed edge ML models and firmware for noise pollution sensing and environmental classification.</li>
+          <li>Curated and published open, geo-tagged urban noise datasets for ML applications.</li>
+          <li>Engineered autonomous solar-powered IoT hardware platforms for extended field deployments.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item current reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-role">Part-Time Lecturer</span>
+          <span class="timeline-org">Makerere University</span>
+          <span class="timeline-period">May 2021 – Present</span>
+        </div>
+        <p class="timeline-loc">📍 Kampala, Uganda · College of Computing &amp; Information Sciences</p>
+        <ul class="timeline-bullets">
+          <li>Instructs <em>Embedded Systems I &amp; II</em> covering microcontroller interfacing, RTOS, and communication protocols.</li>
+          <li>Supervises final-year software engineering student capstone research and embedded implementations.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-role">Data Science Africa Fellow</span>
+          <span class="timeline-org">DSAIL, DeKUT</span>
+          <span class="timeline-period">Nov 2024 – 2025</span>
+        </div>
+        <p class="timeline-loc">📍 Nyeri, Kenya · Center for Data Science &amp; Artificial Intelligence</p>
+        <ul class="timeline-bullets">
+          <li>Optimized edge OS image builds for low-power operation on continuous bioacoustic sensor nodes.</li>
+          <li>Trained, quantized, and deployed bird species classification models at the Dedan Kimathi Wildlife Conservancy.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-role">Research Fellow</span>
+          <span class="timeline-org">AirQount · Makerere</span>
+          <span class="timeline-period">Oct 2023 – 2024</span>
+        </div>
+        <p class="timeline-loc">📍 Kampala, Uganda</p>
+        <ul class="timeline-bullets">
+          <li>Deployed edge computer vision models for vehicle classification and vehicular emission estimation.</li>
+          <li>Integrated mobile sensing hardware for urban air pollution tracking.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-role">Graduate Research Assistant</span>
+          <span class="timeline-org">iLabs@MAK</span>
+          <span class="timeline-period">Jul 2019 – Nov 2020</span>
+        </div>
+        <p class="timeline-loc">📍 Makerere University, Kampala</p>
+        <ul class="timeline-bullets">
+          <li>Developed desktop client software for remote internet-enabled laboratory hardware.</li>
+          <li>Organized national robotics competitions and mentored undergraduate engineering students.</li>
+        </ul>
+      </div>
+
     </div>
-    <div class="teaching-card reveal">
-      <p class="teaching-course">Final Year Project Supervision</p>
-      <p class="teaching-audience">3rd Year · Software Engineering</p>
-      <p class="teaching-desc">Guides students through the full project lifecycle — from problem scoping and design through implementation and evaluation.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <p class="section-label reveal">Scholarly Work</p>
+    <h2 class="section-title reveal">Publications</h2>
+    <div class="pub-list">
+
+      <article class="pub-item reveal">
+        <span class="pub-badge badge-journal">Scientific Data · 2026</span>
+        <h3 class="pub-title">Noise mapping and ambient sound recordings of the urban environment in Uganda</h3>
+        <p class="pub-authors">Nsumba, S., Muhanguzi, T., Ouma, E. N., Sekalala, I., Bainomugisha, E., Mwebaze, E., &amp; Quinn, J.</p>
+        <p class="pub-venue">Scientific Data (Nature), 2026</p>
+        <div class="pub-actions">
+          <a href="https://www.nature.com/articles/s41597-026-06658-w" target="_blank" rel="noopener noreferrer" class="pub-link">↗ Scientific Data</a>
+        </div>
+      </article>
+
+      <article class="pub-item reveal">
+        <span class="pub-badge badge-conf">PMLR · 2026</span>
+        <h3 class="pub-title">Sunflower: A New Approach to Expanding Coverage of African Languages in Large Language Models</h3>
+        <p class="pub-authors">Akera, B., Ouma, E.N., Yiga, G., Walukagga, P., Natukunda, P., Saaka, T., Nsumba, S., … Muhanguzi, J.T., et al.</p>
+        <p class="pub-venue">Proceedings of the AI for African Languages Conference 2025 · PMLR 314:1–20</p>
+        <div class="pub-actions">
+          <a href="https://proceedings.mlr.press/v314/akera26a.html" target="_blank" rel="noopener noreferrer" class="pub-link">↗ PMLR v314</a>
+        </div>
+      </article>
+
+      <article class="pub-item reveal">
+        <span class="pub-badge badge-conf">PMLR · 2026</span>
+        <h3 class="pub-title">Optimisation of a Raspberry Pi-based Bioacoustic Sensor for Data Collection</h3>
+        <p class="pub-authors">Muhanguzi, J., Kiarie, G., Maina, C. &amp; Mwebaze, E.</p>
+        <p class="pub-venue">DLI 2025 Research Track · PMLR 302:1–9</p>
+        <div class="pub-actions">
+          <a href="https://proceedings.mlr.press/v302/muhanguzi26a.html" target="_blank" rel="noopener noreferrer" class="pub-link">↗ PMLR v302</a>
+        </div>
+      </article>
+
+      <article class="pub-item reveal">
+        <span class="pub-badge badge-workshop">NeurIPS Workshop · 2024</span>
+        <h3 class="pub-title">Acoustic Environmental Sensing on the Edge</h3>
+        <p class="pub-authors">Tibabwetiza, J. M.</p>
+        <p class="pub-venue">NeurIPS 2024 Workshop</p>
+        <div class="pub-actions">
+          <a href="https://neurips.cc/virtual/2024/108272" target="_blank" rel="noopener noreferrer" class="pub-link">↗ NeurIPS Proceedings</a>
+        </div>
+      </article>
+
+      <article class="pub-item reveal">
+        <span class="pub-badge badge-workshop">Black in AI · 2023</span>
+        <h3 class="pub-title">An Urban Noise Classification Model for Edge Devices</h3>
+        <p class="pub-authors">Tibabwetiza, J. M.</p>
+        <p class="pub-venue">Black in AI Workshop 2023</p>
+        <div class="pub-actions">
+          <a href="https://www.blackinai.org/event/2023-black-in-ai-workshop" target="_blank" rel="noopener noreferrer" class="pub-link">↗ Black in AI</a>
+        </div>
+      </article>
+
+      <article class="pub-item reveal">
+        <span class="pub-badge badge-conf">IEEE IST-Africa · 2020</span>
+        <h3 class="pub-title">Development of an Open Source Desktop Application Client Software for Running Internet Enabled Laboratories</h3>
+        <p class="pub-authors">Tibabwetiza, J. M., &amp; Lating, P. O.</p>
+        <p class="pub-venue">IST-Africa Conference (IST-Africa), pp. 1–6. IEEE</p>
+        <div class="pub-actions">
+          <a href="https://ieeexplore.ieee.org/document/9144022" target="_blank" rel="noopener noreferrer" class="pub-link">↗ IEEE Xplore</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label reveal">Academic Background</p>
+    <h2 class="section-title reveal">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card reveal" data-year="PhD">
+        <p class="edu-degree">PhD in Computer Science</p>
+        <p class="edu-spec">Edge-Optimized Multi-Modal Machine Learning for Urban Sensing</p>
+        <p class="edu-uni">Makerere University, Kampala</p>
+        <p class="edu-period">In Progress</p>
+      </div>
+      <div class="edu-card reveal" data-year="2024">
+        <p class="edu-degree">MSc in Computer Science</p>
+        <p class="edu-spec">AI &amp; Data Science</p>
+        <p class="edu-uni">Makerere University, Kampala</p>
+        <p class="edu-period">2022 – 2024</p>
+      </div>
+      <div class="edu-card reveal" data-year="2020">
+        <p class="edu-degree">BSc in Computer Engineering</p>
+        <p class="edu-spec">Hardware &amp; Embedded Systems</p>
+        <p class="edu-uni">Makerere University, Kampala</p>
+        <p class="edu-period">2015 – 2020</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label reveal">Technical Expertise</p>
+    <h2 class="section-title reveal">Skills &amp; Tooling</h2>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <p class="skill-group-title">Languages</p>
+        <div class="skill-tags">
+          <span class="skill-tag">C</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Arduino / C++</span>
+          <span class="skill-tag">Bash</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <p class="skill-group-title">AI &amp; Edge ML</p>
+        <div class="skill-tags">
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">LiteRT / TFLite</span>
+          <span class="skill-tag">Quantization &amp; Pruning</span>
+          <span class="skill-tag">TinyML</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <p class="skill-group-title">Protocols &amp; Comms</p>
+        <div class="skill-tags">
+          <span class="skill-tag">GSM / LTE</span>
+          <span class="skill-tag">LoRa</span>
+          <span class="skill-tag">BLE</span>
+          <span class="skill-tag">Wi-Fi</span>
+          <span class="skill-tag">I2C / SPI / UART</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <p class="skill-group-title">Hardware &amp; Systems</p>
+        <div class="skill-tags">
+          <span class="skill-tag">PCB Design</span>
+          <span class="skill-tag">Solar Harvesting</span>
+          <span class="skill-tag">Raspberry Pi</span>
+          <span class="skill-tag">STM32 / ESP32</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <p class="skill-group-title">Cloud &amp; DevOps</p>
+        <div class="skill-tags">
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Azure</span>
+          <span class="skill-tag">Terraform</span>
+          <span class="skill-tag">Hugging Face</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <p class="skill-group-title">Research &amp; MLOps</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Weights &amp; Biases</span>
+          <span class="skill-tag">LaTeX</span>
+          <span class="skill-tag">Streamlit</span>
+          <span class="skill-tag">Git / GitHub</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <p class="section-label reveal">Academia</p>
+    <h2 class="section-title reveal">Teaching</h2>
+    <div class="teaching-cards">
+      <div class="teaching-card reveal">
+        <p class="teaching-course">Embedded Systems I</p>
+        <p class="teaching-audience">1st Year · Recess Semester · Computer Science</p>
+        <p class="teaching-desc">Foundations of embedded hardware, bare-metal C programming, microcontroller registers, timers, and basic peripheral interfacing.</p>
+      </div>
+      <div class="teaching-card reveal">
+        <p class="teaching-course">Embedded Systems II</p>
+        <p class="teaching-audience">3rd Year · Semester 2 · Software Engineering</p>
+        <p class="teaching-desc">Advanced embedded programming, hardware-software co-design, bus architectures, RTOS task management, and edge sensor pipelines.</p>
+      </div>
+      <div class="teaching-card reveal">
+        <p class="teaching-course">Capstones &amp; Project Mentorship</p>
+        <p class="teaching-audience">Undergraduate Supervision · Software Engineering</p>
+        <p class="teaching-desc">Mentoring final-year engineering candidates through system architecture, edge prototyping, testing, and thesis defense.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div>
+        <p class="section-label reveal">Get in Touch</p>
+        <h2 class="section-title reveal" style="margin-bottom:1rem;">Let's Connect</h2>
+        <p class="reveal" style="font-family:var(--serif);font-style:italic;font-size:0.95rem;color:var(--text2);line-height:1.7;max-width:380px;">
+          Open to research collaborations, visiting fellowships, industrial consulting, and conversations around edge AI and environmental telemetry.
+        </p>
+      </div>
+      <div class="contact-links reveal">
+        <a href="mailto:tibajoel90@gmail.com" class="contact-link">
+          <span class="contact-link-icon">Email</span>
+          <span class="contact-link-val">tibajoel90@gmail.com</span>
+        </a>
+        <a href="tel:+256784149033" class="contact-link">
+          <span class="contact-link-icon">Phone</span>
+          <span class="contact-link-val">+256 784 149 033</span>
+        </a>
+        <a href="https://github.com/JoelMuhanguzi" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="contact-link-icon">GitHub</span>
+          <span class="contact-link-val">github.com/JoelMuhanguzi</span>
+        </a>
+        <a href="https://linkedin.com/in/joelmuhanguzi" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="contact-link-icon">LinkedIn</span>
+          <span class="contact-link-val">linkedin.com/in/joelmuhanguzi</span>
+        </a>
+        <a href="https://x.com/Joel_Muhanguzi" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="contact-link-icon">X / Twitter</span>
+          <span class="contact-link-val">@Joel_Muhanguzi</span>
+        </a>
+      </div>
     </div>
   </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CONTACT -->
-<div class="contact-section" id="contact">
-  <div class="contact-inner">
-    <div>
-      <p class="section-label reveal">Get in Touch</p>
-      <h2 class="section-title reveal" style="margin-bottom:1rem;">Let's Connect</h2>
-      <p class="reveal" style="font-family:var(--serif);font-style:italic;font-size:0.95rem;color:var(--text2);line-height:1.7;max-width:380px;">
-        Open to research collaborations, fellowship opportunities, consulting engagements, and conversations about edge AI for Africa.
-      </p>
-    </div>
-    <div class="contact-links reveal">
-      <a href="mailto:tibajoel90@gmail.com" class="contact-link">
-        <span class="contact-link-icon">email</span>
-        <span class="contact-link-val">tibajoel90@gmail.com</span>
-      </a>
-      <a href="tel:+256784149033" class="contact-link">
-        <span class="contact-link-icon">phone</span>
-        <span class="contact-link-val">+256 784 149 033</span>
-      </a>
-      <a href="https://github.com" target="_blank" rel="noopener" class="contact-link">
-        <span class="contact-link-icon">github</span>
-        <span class="contact-link-val">github.com/JoelMuhanguzi</span>
-      </a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link">
-        <span class="contact-link-icon">linkedin</span>
-        <span class="contact-link-val">linkedin.com/in/joelmuhanguzi</span>
-      </a>
-      <a href="https://twitter.com" target="_blank" rel="noopener" class="contact-link">
-        <span class="contact-link-icon">twitter / x</span>
-        <span class="contact-link-val">@Joel_Muhanguzi</span>
-      </a>
-    </div>
-  </div>
-</div>
+</main>
 
 <footer>
   <p>Joel Tibabwetiza Muhanguzi · Kampala, Uganda</p>
@@ -1240,36 +1327,52 @@
 </footer>
 
 <script>
-  // Theme toggle
+  // Theme Toggle & System Preference Handling
   const root = document.documentElement;
   const btn = document.getElementById('themeToggle');
-  const saved = localStorage.getItem('theme') || 'dark';
-  if (saved === 'light') root.setAttribute('data-theme', 'light');
+  const userPref = localStorage.getItem('theme');
+  const systemPrefLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  
+  if (userPref === 'light' || (!userPref && systemPrefLight)) {
+    root.setAttribute('data-theme', 'light');
+  }
 
   btn.addEventListener('click', () => {
-    const current = root.getAttribute('data-theme');
-    const next = current === 'light' ? 'dark' : 'light';
-    root.setAttribute('data-theme', next);
+    const isLight = root.getAttribute('data-theme') === 'light';
+    const next = isLight ? 'dark' : 'light';
+    if (next === 'light') {
+      root.setAttribute('data-theme', 'light');
+    } else {
+      root.removeAttribute('data-theme');
+    }
     localStorage.setItem('theme', next);
   });
 
-  // Scroll reveal
+  // Mobile Menu Toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Scroll Reveal via IntersectionObserver
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         setTimeout(() => {
           entry.target.classList.add('visible');
-        }, (entry.target.dataset.delay || 0) * 80);
+        }, (entry.target.dataset.delay || 0) * 60);
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
 
-  // Stagger siblings
-  document.querySelectorAll('.reveal').forEach((el, i) => {
+  document.querySelectorAll('.reveal').forEach((el) => {
     const siblings = Array.from(el.parentElement.querySelectorAll('.reveal'));
-    const idx = siblings.indexOf(el);
-    el.dataset.delay = idx;
+    el.dataset.delay = siblings.indexOf(el);
     observer.observe(el);
   });
 </script>
