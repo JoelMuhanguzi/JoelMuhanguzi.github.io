@@ -13,52 +13,51 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Lora:ital,wght@0,400;0,500;1,400&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --bg: #0a0e0b;
-    --bg2: #0f1410;
-    --card: #131a14;
-    --border: #1e2b1f;
-    --accent: #4ade80;
-    --accent2: #86efac;
-    --accent3: #166534;
-    --text: #e8f0e8;
-    --text2: #9ab89a;
-    --text3: #5a7a5a;
-    --gold: #fbbf24;
-    --nav-bg: rgba(10, 14, 11, 0.88);
-    --mono: 'DM Mono', monospace;
-    --serif: 'Lora', serif;
-    --sans: 'Syne', sans-serif;
+    --bg: #ffffff;
+    --bg2: #f7f7f5;
+    --card: #ffffff;
+    --border: #e4e2dc;
+    --accent: #4338ca;
+    --accent2: #4f46e5;
+    --accent-soft: #eef0fd;
+    --text: #1c1c1a;
+    --text2: #55564f;
+    --text3: #8a8b83;
+    --gold: #b45309;
+    --nav-bg: rgba(255, 255, 255, 0.9);
+    --serif: 'Source Serif 4', serif;
+    --sans: 'Inter', sans-serif;
   }
 
-  :root[data-theme="light"] {
-    --bg: #f5f7f5;
-    --bg2: #eef2ee;
-    --card: #ffffff;
-    --border: #d4e0d4;
-    --accent: #16a34a;
-    --accent2: #15803d;
-    --accent3: #bbf7d0;
-    --text: #111c12;
-    --text2: #3d5c3f;
-    --text3: #7a9e7c;
+  :root[data-theme="dark"] {
+    --bg: #14140f;
+    --bg2: #1a1a14;
+    --card: #1a1a14;
+    --border: #302f26;
+    --accent: #a5b4fc;
+    --accent2: #c7d2fe;
+    --accent-soft: rgba(165,180,252,0.08);
+    --text: #f0efe9;
+    --text2: #b3b2a6;
+    --text3: #797868;
     --gold: #d97706;
-    --nav-bg: rgba(245, 247, 245, 0.92);
+    --nav-bg: rgba(20, 20, 15, 0.9);
   }
 
   *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   }
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 4.5rem;
   }
 
   body {
@@ -67,17 +66,7 @@
     font-family: var(--sans);
     line-height: 1.6;
     overflow-x: hidden;
-  }
-
-  /* Noise overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.6;
+    -webkit-font-smoothing: antialiased;
   }
 
   /* Focus ring for accessibility */
@@ -85,6 +74,8 @@
     outline: 2px solid var(--accent);
     outline-offset: 3px;
   }
+
+  a { color: inherit; }
 
   /* ─── NAV ─────────────────────────────────────── */
   nav {
@@ -96,18 +87,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.25rem 3rem;
+    padding: 1rem 3rem;
     background: var(--nav-bg);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
   }
 
   .nav-logo {
-    font-family: var(--mono);
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--accent);
-    letter-spacing: 0.08em;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text);
     text-decoration: none;
   }
 
@@ -119,28 +109,25 @@
 
   .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.75rem;
     list-style: none;
   }
 
   .nav-links a {
-    font-family: var(--mono);
-    font-size: 0.75rem;
+    font-size: 0.82rem;
     color: var(--text2);
     text-decoration: none;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
     transition: color 0.2s;
   }
 
   .nav-links a:hover { color: var(--accent); }
 
   .theme-toggle {
-    background: var(--card);
+    background: var(--bg2);
     border: 1px solid var(--border);
     border-radius: 20px;
-    width: 44px;
-    height: 24px;
+    width: 40px;
+    height: 22px;
     cursor: pointer;
     position: relative;
     flex-shrink: 0;
@@ -149,8 +136,8 @@
   .theme-toggle::after {
     content: '';
     position: absolute;
-    top: 3px;
-    left: 3px;
+    top: 2px;
+    left: 2px;
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -158,8 +145,8 @@
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  :root[data-theme="light"] .theme-toggle::after {
-    transform: translateX(20px);
+  :root[data-theme="dark"] .theme-toggle::after {
+    transform: translateX(18px);
   }
 
   .mobile-menu-btn {
@@ -173,104 +160,49 @@
 
   /* ─── HERO ─────────────────────────────────────── */
   .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-    padding: 0 3rem;
-    padding-top: 5rem;
-    position: relative;
-    overflow: hidden;
-    gap: 2rem;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(74,222,128,0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(22,101,52,0.15) 0%, transparent 60%);
-  }
-
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(74,222,128,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(74,222,128,0.04) 1px, transparent 1px);
-    background-size: 50px 50px;
-    mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 620px;
+    padding: 8.5rem 3rem 4.5rem;
+    max-width: 860px;
+    margin: 0 auto;
   }
 
   .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     color: var(--accent);
-    letter-spacing: 0.12em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    padding: 0.4rem 0.8rem;
-    background: rgba(74,222,128,0.05);
-    border: 1px solid rgba(74,222,128,0.3);
-    border-radius: 4px;
-  }
-
-  .hero-tag::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.85); }
+    margin-bottom: 1.25rem;
+    font-weight: 600;
   }
 
   .hero h1 {
-    font-size: clamp(2rem, 3.8vw, 3.2rem);
-    font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    margin-bottom: 1rem;
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.15rem;
+    color: var(--text);
   }
 
-  .hero h1 .accent { color: var(--accent); }
-
   .hero-subtitle {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.18rem;
+    font-size: 1.1rem;
     color: var(--text2);
-    margin-bottom: 1.25rem;
-    line-height: 1.55;
+    margin-bottom: 1.1rem;
+    line-height: 1.6;
+    max-width: 560px;
   }
 
   .hero-location {
-    font-family: var(--mono);
-    font-size: 0.78rem;
+    font-size: 0.88rem;
     color: var(--text3);
-    letter-spacing: 0.05em;
-    margin-bottom: 2.2rem;
+    margin-bottom: 2.25rem;
   }
 
-  .hero-location span { color: var(--accent2); }
+  .hero-location span { color: var(--text2); }
 
   .hero-cta {
     display: flex;
-    gap: 1rem;
+    gap: 0.9rem;
     flex-wrap: wrap;
   }
 
@@ -278,31 +210,24 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.06em;
+    padding: 0.65rem 1.3rem;
+    font-size: 0.85rem;
+    font-weight: 500;
     text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 5px;
+    transition: all 0.2s ease;
     cursor: pointer;
   }
 
   .btn-primary {
     background: var(--accent);
-    color: #0a0e0b;
-    font-weight: 600;
-    border: 1px solid var(--accent);
-  }
-
-  :root[data-theme="light"] .btn-primary {
     color: #ffffff;
+    border: 1px solid var(--accent);
   }
 
   .btn-primary:hover {
     background: var(--accent2);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(74,222,128,0.25);
+    border-color: var(--accent2);
   }
 
   .btn-outline {
@@ -314,154 +239,55 @@
   .btn-outline:hover {
     border-color: var(--accent);
     color: var(--accent);
-    transform: translateY(-2px);
   }
-
-  /* Hero Terminal */
-  .hero-visual {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .terminal-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    width: 100%;
-    max-width: 460px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(74,222,128,0.05);
-  }
-
-  .terminal-header {
-    background: var(--bg2);
-    padding: 0.75rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .dot { width: 10px; height: 10px; border-radius: 50%; }
-  .dot-r { background: #ff5f57; }
-  .dot-y { background: #ffbd2e; }
-  .dot-g { background: #28c840; }
-
-  .terminal-title {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--text3);
-    margin-left: auto;
-    margin-right: auto;
-    letter-spacing: 0.05em;
-  }
-
-  .terminal-body {
-    padding: 1.25rem 1.5rem;
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    line-height: 1.8;
-  }
-
-  .t-prompt { color: var(--accent); }
-  .t-cmd { color: var(--text); }
-  .t-out { color: var(--text2); padding-left: 1rem; }
-  .t-key { color: var(--gold); }
-  .t-val { color: var(--accent2); }
-  .t-cursor {
-    display: inline-block;
-    width: 7px;
-    height: 1.1em;
-    background: var(--accent);
-    animation: blink 1.1s step-end infinite;
-    vertical-align: text-bottom;
-    margin-left: 2px;
-  }
-
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
   /* ─── SECTIONS ─────────────────────────────────── */
   section {
-    padding: 5.5rem 3rem;
-    max-width: 1200px;
+    padding: 3.25rem 3rem;
+    max-width: 860px;
     margin: 0 auto;
   }
 
   .section-label {
-    font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     color: var(--accent);
-    letter-spacing: 0.15em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    max-width: 60px;
-    height: 1px;
-    background: var(--accent3);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
   }
 
   .section-title {
-    font-size: clamp(1.75rem, 3vw, 2.3rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 3rem;
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.4vw, 1.7rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.75rem;
     color: var(--text);
   }
 
   /* ─── RESEARCH ─────────────────────────────────── */
   .research-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   .research-card {
-    background: var(--card);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.25s, transform 0.25s;
+    padding: 1.35rem 1.5rem;
+    transition: border-color 0.2s;
   }
 
-  .research-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--accent3);
-    transition: background 0.25s;
-  }
-
-  .research-card:hover { 
-    border-color: rgba(74,222,128,0.3); 
-    transform: translateY(-3px); 
-  }
-  .research-card:hover::before { background: var(--accent); }
-
-  .research-icon {
-    font-size: 1.4rem;
-    margin-bottom: 1.25rem;
-    display: inline-block;
-    color: var(--accent);
+  .research-card:hover {
+    border-color: var(--accent);
   }
 
   .research-card h3 {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.4rem;
     color: var(--text);
   }
 
@@ -472,391 +298,363 @@
   }
 
   /* ─── EXPERIENCE ───────────────────────────────── */
-  .timeline {
-    position: relative;
-    padding-left: 2rem;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.5rem;
-    bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, var(--accent), var(--accent3), transparent);
-  }
-
   .timeline-item {
-    position: relative;
-    margin-bottom: 2.5rem;
-    padding-bottom: 2.5rem;
+    padding: 1.5rem 0;
     border-bottom: 1px solid var(--border);
   }
 
-  .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-  .timeline-dot {
-    position: absolute;
-    left: -2.35rem;
-    top: 0.35rem;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    background: var(--accent3);
-    border: 2px solid var(--accent);
-  }
-
-  .timeline-item.current .timeline-dot { background: var(--accent); }
+  .timeline-item:first-child { padding-top: 0; }
+  .timeline-item:last-child { border-bottom: none; padding-bottom: 0; }
 
   .timeline-meta {
     display: flex;
     align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 0.3rem;
+    gap: 0.75rem;
+    margin-bottom: 0.2rem;
     flex-wrap: wrap;
   }
 
   .timeline-role {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--text);
   }
 
   .timeline-org {
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--accent2);
-    letter-spacing: 0.04em;
+    font-size: 0.85rem;
+    color: var(--accent);
   }
 
   .timeline-period {
-    font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     color: var(--text3);
     margin-left: auto;
   }
 
   .timeline-loc {
-    font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     color: var(--text3);
-    margin-bottom: 0.85rem;
+    margin-bottom: 0.65rem;
   }
 
   .timeline-bullets {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 
   .timeline-bullets li {
-    font-size: 0.85rem;
+    font-size: 0.87rem;
     color: var(--text2);
-    padding-left: 1.25rem;
+    padding-left: 1.1rem;
     position: relative;
     line-height: 1.55;
   }
 
   .timeline-bullets li::before {
-    content: '›';
+    content: '–';
     position: absolute;
     left: 0;
-    color: var(--accent);
-    font-weight: bold;
+    color: var(--text3);
   }
 
   /* ─── PUBLICATIONS ──────────────────────────────── */
   .pub-list {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
   }
 
   .pub-item {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 1.75rem;
-    transition: border-color 0.25s;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
   }
 
-  .pub-item:hover { border-color: rgba(74,222,128,0.3); }
+  .pub-item:first-child { padding-top: 0; }
+  .pub-item:last-child { border-bottom: none; padding-bottom: 0; }
 
   .pub-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
-    padding: 0.25rem 0.6rem;
-    border-radius: 3px;
-    margin-bottom: 0.85rem;
+    color: var(--text3);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
   }
 
-  .badge-conf { background: rgba(74,222,128,0.1); color: var(--accent2); border: 1px solid rgba(74,222,128,0.2); }
-  .badge-journal { background: rgba(251,191,36,0.1); color: var(--gold); border: 1px solid rgba(251,191,36,0.2); }
-  .badge-workshop { background: rgba(167,139,250,0.1); color: #c4b5fd; border: 1px solid rgba(167,139,250,0.2); }
-
   .pub-title {
-    font-size: 1rem;
+    font-family: var(--serif);
+    font-size: 1.02rem;
     font-weight: 600;
     color: var(--text);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.35rem;
     line-height: 1.45;
   }
 
   .pub-authors {
-    font-family: var(--serif);
-    font-style: italic;
     font-size: 0.85rem;
     color: var(--text3);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
   }
 
   .pub-venue {
-    font-family: var(--mono);
-    font-size: 0.75rem;
+    font-size: 0.82rem;
     color: var(--text2);
   }
 
   .pub-actions {
     display: flex;
     gap: 1rem;
-    margin-top: 0.75rem;
+    margin-top: 0.6rem;
   }
 
   .pub-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    font-family: var(--mono);
-    font-size: 0.75rem;
+    gap: 0.3rem;
+    font-size: 0.82rem;
     color: var(--accent);
     text-decoration: none;
-    transition: color 0.2s;
   }
 
-  .pub-link:hover { color: var(--accent2); text-decoration: underline; }
+  .pub-link:hover { text-decoration: underline; }
 
   /* ─── EDUCATION ────────────────────────────────── */
-  .edu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  .edu-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .edu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     gap: 1.5rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border);
   }
 
-  .edu-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .edu-card::after {
-    content: attr(data-year);
-    position: absolute;
-    bottom: -0.8rem;
-    right: 1rem;
-    font-family: var(--sans);
-    font-size: 4.5rem;
-    font-weight: 800;
-    color: rgba(74,222,128,0.03);
-    line-height: 1;
-    pointer-events: none;
-  }
+  .edu-item:first-child { padding-top: 0; }
+  .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
 
   .edu-degree {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 600;
     color: var(--text);
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.25rem;
   }
 
   .edu-spec {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--accent2);
-    margin-bottom: 0.6rem;
-    letter-spacing: 0.04em;
+    font-size: 0.85rem;
+    color: var(--text2);
+    margin-bottom: 0.3rem;
   }
 
   .edu-uni {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 0.88rem;
-    color: var(--text2);
+    font-size: 0.85rem;
+    color: var(--text3);
+  }
+
+  .edu-fellowships {
+    list-style: none;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .edu-fellowships li {
+    font-size: 0.8rem;
+    color: var(--accent);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .edu-fellowships li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--text3);
   }
 
   .edu-period {
-    font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     color: var(--text3);
-    margin-top: 0.6rem;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   /* ─── SKILLS ────────────────────────────────────── */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .skill-group {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 1.75rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2rem;
   }
 
   .skill-group-title {
-    font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     color: var(--accent);
-    letter-spacing: 0.12em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.65rem;
+    font-weight: 600;
   }
 
   .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 
   .skill-tag {
-    font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     color: var(--text2);
-    background: rgba(74,222,128,0.05);
-    border: 1px solid rgba(74,222,128,0.15);
-    padding: 0.25rem 0.6rem;
-    border-radius: 3px;
-    letter-spacing: 0.02em;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
   }
 
   /* ─── TEACHING ──────────────────────────────────── */
-  .teaching-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+  .teaching-list {
+    display: flex;
+    flex-direction: column;
   }
 
   .teaching-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 1.75rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border);
   }
 
+  .teaching-card:first-child { padding-top: 0; }
+  .teaching-card:last-child { border-bottom: none; padding-bottom: 0; }
+
   .teaching-course {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .teaching-audience {
+    font-size: 0.78rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .teaching-desc {
+    font-size: 0.85rem;
+    color: var(--text2);
+    line-height: 1.55;
+  }
+
+  /* ─── COMMUNITIES ───────────────────────────────── */
+  .community-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .community-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .community-item:first-child { padding-top: 0; }
+  .community-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .community-name {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--text);
     margin-bottom: 0.25rem;
   }
 
-  .teaching-audience {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--accent2);
-    letter-spacing: 0.04em;
-    margin-bottom: 0.6rem;
-  }
-
-  .teaching-desc {
-    font-size: 0.82rem;
+  .community-desc {
+    font-size: 0.85rem;
     color: var(--text2);
     line-height: 1.55;
   }
 
   /* ─── CONTACT ───────────────────────────────────── */
   .contact-section {
-    background: var(--card);
+    background: var(--bg2);
     border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 5.5rem 3rem;
+    padding: 3.75rem 3rem;
   }
 
   .contact-inner {
-    max-width: 1200px;
+    max-width: 860px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 3rem;
     align-items: start;
+  }
+
+  .contact-intro {
+    font-family: var(--serif);
+    font-size: 1.02rem;
+    color: var(--text2);
+    line-height: 1.65;
+    max-width: 360px;
   }
 
   .contact-links {
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
+    gap: 0.6rem;
   }
 
   .contact-link {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1.15rem;
     text-decoration: none;
-    padding: 0.85rem 1.15rem;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    background: var(--bg2);
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
   }
 
-  .contact-link:hover {
-    border-color: rgba(74,222,128,0.4);
-    background: rgba(74,222,128,0.04);
-    transform: translateX(4px);
-  }
+  .contact-link:last-child { border-bottom: none; }
+
+  .contact-link:hover .contact-link-val { color: var(--accent); }
 
   .contact-link-icon {
-    font-family: var(--mono);
     font-size: 0.75rem;
-    color: var(--accent);
-    width: 6rem;
+    color: var(--text3);
+    width: 4.5rem;
     flex-shrink: 0;
     text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
 
   .contact-link-val {
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    color: var(--text2);
+    font-size: 0.9rem;
+    color: var(--text);
+    transition: color 0.2s;
   }
 
   /* ─── FOOTER ────────────────────────────────────── */
   footer {
-    padding: 2.5rem 3rem;
+    padding: 2rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 860px;
     margin: 0 auto;
   }
 
   footer p {
-    font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     color: var(--text3);
-    letter-spacing: 0.04em;
   }
-
-  footer p span { color: var(--accent3); }
 
   /* ─── SCROLL ANIMATIONS ─────────────────────────── */
   .reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
   }
 
   .reveal.visible {
@@ -864,16 +662,8 @@
     transform: translateY(0);
   }
 
-  /* ─── DIVIDER ──────────────────────────────────── */
-  .divider {
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--border), transparent);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
   /* ─── RESPONSIVE ────────────────────────────────── */
-  @media (max-width: 860px) {
+  @media (max-width: 720px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links {
       display: none;
@@ -884,23 +674,21 @@
       flex-direction: column;
       background: var(--nav-bg);
       backdrop-filter: blur(16px);
-      padding: 1.5rem 2rem;
+      padding: 1.5rem;
       border-bottom: 1px solid var(--border);
-      gap: 1.25rem;
+      gap: 1.1rem;
     }
     .nav-links.open { display: flex; }
     .mobile-menu-btn { display: block; }
-    
-    .hero {
-      grid-template-columns: 1fr;
-      padding: 6.5rem 1.5rem 3rem;
-      gap: 3rem;
-    }
-    .hero-visual { justify-content: center; }
-    section { padding: 4rem 1.5rem; }
-    .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .contact-section { padding: 4rem 1.5rem; }
-    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.75rem; text-align: center; }
+
+    .hero { padding: 6.5rem 1.5rem 3rem; }
+    section { padding: 2.5rem 1.5rem; }
+    .research-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-section { padding: 3rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.6rem; text-align: center; }
+    .edu-item { flex-direction: column; gap: 0.2rem; }
   }
 </style>
 </head>
@@ -909,7 +697,7 @@
 <!-- NAV -->
 <header>
   <nav aria-label="Main Navigation">
-    <a href="#" class="nav-logo">joel.t.muhanguzi</a>
+    <a href="#" class="nav-logo">Joel Muhanguzi</a>
     <div class="nav-right">
       <ul class="nav-links" id="navLinks">
         <li><a href="#research">Research</a></li>
@@ -930,48 +718,15 @@
 <main>
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-
-    <div class="hero-content">
-      <div class="hero-tag">Embedded AI · Edge ML · Signal Processing</div>
-      <h1>Joel <span class="accent">Tibabwetiza</span><br>Muhanguzi</h1>
-      <p class="hero-subtitle">Building intelligent systems at the intersection<br>of constrained hardware and real-world sensing.</p>
-      <p class="hero-location">📍 <span>Kampala, Uganda</span> · Makerere University · Sunbird AI</p>
-      <div class="hero-cta">
-        <a href="#publications" class="btn btn-primary">View Publications</a>
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="terminal-card">
-        <div class="terminal-header">
-          <span class="dot dot-r"></span>
-          <span class="dot dot-y"></span>
-          <span class="dot dot-g"></span>
-          <span class="terminal-title">about.json</span>
-        </div>
-        <div class="terminal-body">
-          <div><span class="t-prompt">$</span> <span class="t-cmd">cat profile.json</span></div>
-          <div class="t-out">{</div>
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Joel T. Muhanguzi"</span>,</div>
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-val">"Embedded &amp; ML Engineer"</span>,</div>
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"affiliation"</span>: [</div>
-          <div class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Sunbird AI"</span>,</div>
-          <div class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Makerere University"</span></div>
-          <div class="t-out">&nbsp;&nbsp;],</div>
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"focus"</span>: <span class="t-val">"Edge AI &amp; Urban Sensing"</span>,</div>
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"phd"</span>: <span class="t-val">"In Progress (CS)"</span>,</div>
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val">"open_to_collab"</span></div>
-          <div class="t-out">}</div>
-          <div><span class="t-prompt">$</span> <span class="t-cursor"></span></div>
-        </div>
-      </div>
+    <p class="hero-tag">Embedded AI · Edge ML · Signal Processing</p>
+    <h1>Joel Tibabwetiza Muhanguzi</h1>
+    <p class="hero-subtitle">Building intelligent systems at the intersection of constrained hardware and real-world sensing.</p>
+    <p class="hero-location">Kampala, Uganda · <span>Makerere University · Sunbird AI</span></p>
+    <div class="hero-cta">
+      <a href="#publications" class="btn btn-primary">View Publications</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
     </div>
   </div>
-
-  <div class="divider"></div>
 
   <!-- RESEARCH INTERESTS -->
   <section id="research">
@@ -979,39 +734,31 @@
     <h2 class="section-title reveal">What I Work On</h2>
     <div class="research-grid">
       <div class="research-card reveal">
-        <span class="research-icon">🔊</span>
         <h3>Urban Noise &amp; Bioacoustics</h3>
         <p>Deploying edge ML models for urban noise classification and wildlife bioacoustic sensing in constrained environments.</p>
       </div>
       <div class="research-card reveal">
-        <span class="research-icon">🍃</span>
         <h3>Environmental Sensing</h3>
         <p>Air quality monitoring and biodiversity conservation through solar-powered IoT nodes and on-device inference.</p>
       </div>
       <div class="research-card reveal">
-        <span class="research-icon">⚡</span>
         <h3>Efficient Edge AI</h3>
         <p>Model quantization, pruning, and TinyML optimization for deployment on memory- and power-constrained hardware.</p>
       </div>
       <div class="research-card reveal">
-        <span class="research-icon">🌐</span>
         <h3>African Language NLP</h3>
         <p>Low-resource multilingual NLP for African languages — translation pipelines, LLM fine-tuning, and dataset curation.</p>
       </div>
       <div class="research-card reveal">
-        <span class="research-icon">🎙️</span>
         <h3>Citizen Feedback Systems</h3>
         <p>AI-driven voice feedback devices for assessing public service quality in local government and public institutions.</p>
       </div>
       <div class="research-card reveal">
-        <span class="research-icon">🛠️</span>
         <h3>IoT Hardware Design</h3>
         <p>PCB design, solar energy harvesting circuits, and firmware development for long-running remote sensing deployments.</p>
       </div>
     </div>
   </section>
-
-  <div class="divider"></div>
 
   <!-- EXPERIENCE -->
   <section id="experience">
@@ -1019,14 +766,13 @@
     <h2 class="section-title reveal">Work History</h2>
     <div class="timeline">
 
-      <div class="timeline-item current reveal">
-        <div class="timeline-dot"></div>
+      <div class="timeline-item reveal">
         <div class="timeline-meta">
           <span class="timeline-role">Hardware Development Lead</span>
           <span class="timeline-org">Sunbird AI</span>
           <span class="timeline-period">May 2021 – Present</span>
         </div>
-        <p class="timeline-loc">📍 Kampala, Uganda</p>
+        <p class="timeline-loc">Kampala, Uganda</p>
         <ul class="timeline-bullets">
           <li>Developed edge ML models and firmware for noise pollution sensing and environmental classification.</li>
           <li>Curated and published open, geo-tagged urban noise datasets for ML applications.</li>
@@ -1034,14 +780,13 @@
         </ul>
       </div>
 
-      <div class="timeline-item current reveal">
-        <div class="timeline-dot"></div>
+      <div class="timeline-item reveal">
         <div class="timeline-meta">
           <span class="timeline-role">Part-Time Lecturer</span>
           <span class="timeline-org">Makerere University</span>
           <span class="timeline-period">May 2021 – Present</span>
         </div>
-        <p class="timeline-loc">📍 Kampala, Uganda · College of Computing &amp; Information Sciences</p>
+        <p class="timeline-loc">Kampala, Uganda · College of Computing &amp; Information Sciences</p>
         <ul class="timeline-bullets">
           <li>Instructs <em>Embedded Systems I &amp; II</em> covering microcontroller interfacing, RTOS, and communication protocols.</li>
           <li>Supervises final-year software engineering student capstone research and embedded implementations.</li>
@@ -1049,13 +794,12 @@
       </div>
 
       <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
         <div class="timeline-meta">
           <span class="timeline-role">Data Science Africa Fellow</span>
-          <span class="timeline-org">DSAIL, DeKUT</span>
+          <span class="timeline-org">DSAIL, DeKUT · with Sunbird AI</span>
           <span class="timeline-period">Nov 2024 – 2025</span>
         </div>
-        <p class="timeline-loc">📍 Nyeri, Kenya · Center for Data Science &amp; Artificial Intelligence</p>
+        <p class="timeline-loc">Nyeri, Kenya · Center for Data Science &amp; Artificial Intelligence</p>
         <ul class="timeline-bullets">
           <li>Optimized edge OS image builds for low-power operation on continuous bioacoustic sensor nodes.</li>
           <li>Trained, quantized, and deployed bird species classification models at the Dedan Kimathi Wildlife Conservancy.</li>
@@ -1063,27 +807,26 @@
       </div>
 
       <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
         <div class="timeline-meta">
-          <span class="timeline-role">Research Fellow</span>
-          <span class="timeline-org">AirQount · Makerere</span>
-          <span class="timeline-period">Oct 2023 – 2024</span>
+          <span class="timeline-role">Tech Manager</span>
+          <span class="timeline-org">SEMA – East Africa (TalkToSEMA) · Contract</span>
+          <span class="timeline-period">Oct 2020 – Apr 2021</span>
         </div>
-        <p class="timeline-loc">📍 Kampala, Uganda</p>
+        <p class="timeline-loc">Kampala, Uganda</p>
         <ul class="timeline-bullets">
-          <li>Deployed edge computer vision models for vehicle classification and vehicular emission estimation.</li>
-          <li>Integrated mobile sensing hardware for urban air pollution tracking.</li>
+          <li>Oversaw the full lifecycle of metric-based citizen feedback terminals integrated with an interactive data dashboard deployed in public offices across Uganda.</li>
+          <li>Reviewed and improved PCB and hardware designs, led production and assembly, and coordinated shipping and maintenance.</li>
+          <li>Conducted research to extend device longevity and reliability, and collaborated with public offices to ensure collected data was effectively disseminated and used to improve service delivery.</li>
         </ul>
       </div>
 
       <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
         <div class="timeline-meta">
           <span class="timeline-role">Graduate Research Assistant</span>
           <span class="timeline-org">iLabs@MAK</span>
           <span class="timeline-period">Jul 2019 – Nov 2020</span>
         </div>
-        <p class="timeline-loc">📍 Makerere University, Kampala</p>
+        <p class="timeline-loc">Makerere University, Kampala</p>
         <ul class="timeline-bullets">
           <li>Developed desktop client software for remote internet-enabled laboratory hardware.</li>
           <li>Organized national robotics competitions and mentored undergraduate engineering students.</li>
@@ -1093,8 +836,6 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
   <!-- PUBLICATIONS -->
   <section id="publications">
     <p class="section-label reveal">Scholarly Work</p>
@@ -1102,7 +843,7 @@
     <div class="pub-list">
 
       <article class="pub-item reveal">
-        <span class="pub-badge badge-journal">Scientific Data · 2026</span>
+        <span class="pub-badge">Scientific Data · 2026</span>
         <h3 class="pub-title">Noise mapping and ambient sound recordings of the urban environment in Uganda</h3>
         <p class="pub-authors">Nsumba, S., Muhanguzi, T., Ouma, E. N., Sekalala, I., Bainomugisha, E., Mwebaze, E., &amp; Quinn, J.</p>
         <p class="pub-venue">Scientific Data (Nature), 2026</p>
@@ -1112,7 +853,7 @@
       </article>
 
       <article class="pub-item reveal">
-        <span class="pub-badge badge-conf">PMLR · 2026</span>
+        <span class="pub-badge">PMLR · 2026</span>
         <h3 class="pub-title">Sunflower: A New Approach to Expanding Coverage of African Languages in Large Language Models</h3>
         <p class="pub-authors">Akera, B., Ouma, E.N., Yiga, G., Walukagga, P., Natukunda, P., Saaka, T., Nsumba, S., … Muhanguzi, J.T., et al.</p>
         <p class="pub-venue">Proceedings of the AI for African Languages Conference 2025 · PMLR 314:1–20</p>
@@ -1122,7 +863,7 @@
       </article>
 
       <article class="pub-item reveal">
-        <span class="pub-badge badge-conf">PMLR · 2026</span>
+        <span class="pub-badge">PMLR · 2026</span>
         <h3 class="pub-title">Optimisation of a Raspberry Pi-based Bioacoustic Sensor for Data Collection</h3>
         <p class="pub-authors">Muhanguzi, J., Kiarie, G., Maina, C. &amp; Mwebaze, E.</p>
         <p class="pub-venue">DLI 2025 Research Track · PMLR 302:1–9</p>
@@ -1132,7 +873,7 @@
       </article>
 
       <article class="pub-item reveal">
-        <span class="pub-badge badge-workshop">NeurIPS Workshop · 2024</span>
+        <span class="pub-badge">NeurIPS Workshop · 2024</span>
         <h3 class="pub-title">Acoustic Environmental Sensing on the Edge</h3>
         <p class="pub-authors">Tibabwetiza, J. M.</p>
         <p class="pub-venue">NeurIPS 2024 Workshop</p>
@@ -1142,7 +883,7 @@
       </article>
 
       <article class="pub-item reveal">
-        <span class="pub-badge badge-workshop">Black in AI · 2023</span>
+        <span class="pub-badge">Black in AI · 2023</span>
         <h3 class="pub-title">An Urban Noise Classification Model for Edge Devices</h3>
         <p class="pub-authors">Tibabwetiza, J. M.</p>
         <p class="pub-venue">Black in AI Workshop 2023</p>
@@ -1152,7 +893,7 @@
       </article>
 
       <article class="pub-item reveal">
-        <span class="pub-badge badge-conf">IEEE IST-Africa · 2020</span>
+        <span class="pub-badge">IEEE IST-Africa · 2020</span>
         <h3 class="pub-title">Development of an Open Source Desktop Application Client Software for Running Internet Enabled Laboratories</h3>
         <p class="pub-authors">Tibabwetiza, J. M., &amp; Lating, P. O.</p>
         <p class="pub-venue">IST-Africa Conference (IST-Africa), pp. 1–6. IEEE</p>
@@ -1164,42 +905,51 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
   <!-- EDUCATION -->
   <section id="education">
     <p class="section-label reveal">Academic Background</p>
     <h2 class="section-title reveal">Education</h2>
-    <div class="edu-grid">
-      <div class="edu-card reveal" data-year="PhD">
-        <p class="edu-degree">PhD in Computer Science</p>
-        <p class="edu-spec">Edge-Optimized Multi-Modal Machine Learning for Urban Sensing</p>
-        <p class="edu-uni">Makerere University, Kampala</p>
+    <div class="edu-list">
+      <div class="edu-item reveal">
+        <div>
+          <p class="edu-degree">PhD in Computer Science</p>
+          <p class="edu-spec">Edge-Optimized Multi-Modal Machine Learning for Urban Sensing</p>
+          <p class="edu-uni">Makerere University, Kampala</p>
+          <ul class="edu-fellowships">
+            <li>Mak-AI PhD Fellowship — since Sep 2026</li>
+            <li>College of Computing &amp; Information Sciences PhD Fellowship — since Sep 2026</li>
+          </ul>
+        </div>
         <p class="edu-period">In Progress</p>
       </div>
-      <div class="edu-card reveal" data-year="2024">
-        <p class="edu-degree">MSc in Computer Science</p>
-        <p class="edu-spec">AI &amp; Data Science</p>
-        <p class="edu-uni">Makerere University, Kampala</p>
+      <div class="edu-item reveal">
+        <div>
+          <p class="edu-degree">MSc in Computer Science</p>
+          <p class="edu-spec">AI &amp; Data Science</p>
+          <p class="edu-uni">Makerere University, Kampala</p>
+          <ul class="edu-fellowships">
+            <li>AirQount Research Fellowship, Makerere — Oct 2023 – 2024</li>
+          </ul>
+        </div>
         <p class="edu-period">2022 – 2024</p>
       </div>
-      <div class="edu-card reveal" data-year="2020">
-        <p class="edu-degree">BSc in Computer Engineering</p>
-        <p class="edu-spec">Hardware &amp; Embedded Systems</p>
-        <p class="edu-uni">Makerere University, Kampala</p>
+      <div class="edu-item reveal">
+        <div>
+          <p class="edu-degree">BSc in Computer Engineering</p>
+          <p class="edu-spec">Hardware &amp; Embedded Systems</p>
+          <p class="edu-uni">Makerere University, Kampala</p>
+        </div>
         <p class="edu-period">2015 – 2020</p>
       </div>
     </div>
   </section>
-
-  <div class="divider"></div>
 
   <!-- SKILLS -->
   <section id="skills">
     <p class="section-label reveal">Technical Expertise</p>
     <h2 class="section-title reveal">Skills &amp; Tooling</h2>
     <div class="skills-grid">
-      <div class="skill-group reveal">
+      <div class="reveal">
         <p class="skill-group-title">Languages</p>
         <div class="skill-tags">
           <span class="skill-tag">C</span>
@@ -1209,7 +959,7 @@
           <span class="skill-tag">Bash</span>
         </div>
       </div>
-      <div class="skill-group reveal">
+      <div class="reveal">
         <p class="skill-group-title">AI &amp; Edge ML</p>
         <div class="skill-tags">
           <span class="skill-tag">TensorFlow</span>
@@ -1219,7 +969,7 @@
           <span class="skill-tag">TinyML</span>
         </div>
       </div>
-      <div class="skill-group reveal">
+      <div class="reveal">
         <p class="skill-group-title">Protocols &amp; Comms</p>
         <div class="skill-tags">
           <span class="skill-tag">GSM / LTE</span>
@@ -1229,7 +979,7 @@
           <span class="skill-tag">I2C / SPI / UART</span>
         </div>
       </div>
-      <div class="skill-group reveal">
+      <div class="reveal">
         <p class="skill-group-title">Hardware &amp; Systems</p>
         <div class="skill-tags">
           <span class="skill-tag">PCB Design</span>
@@ -1238,7 +988,7 @@
           <span class="skill-tag">STM32 / ESP32</span>
         </div>
       </div>
-      <div class="skill-group reveal">
+      <div class="reveal">
         <p class="skill-group-title">Cloud &amp; DevOps</p>
         <div class="skill-tags">
           <span class="skill-tag">FastAPI</span>
@@ -1248,7 +998,7 @@
           <span class="skill-tag">Hugging Face</span>
         </div>
       </div>
-      <div class="skill-group reveal">
+      <div class="reveal">
         <p class="skill-group-title">Research &amp; MLOps</p>
         <div class="skill-tags">
           <span class="skill-tag">Weights &amp; Biases</span>
@@ -1260,13 +1010,16 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
   <!-- TEACHING -->
   <section id="teaching">
     <p class="section-label reveal">Academia</p>
     <h2 class="section-title reveal">Teaching</h2>
-    <div class="teaching-cards">
+    <div class="teaching-list">
+      <div class="teaching-card reveal">
+        <p class="teaching-course">Introduction to Embedded Systems</p>
+        <p class="teaching-audience">2nd Year · Semester 1 · Computer Science</p>
+        <p class="teaching-desc">Introduces embedded systems concepts, microcontroller fundamentals, and the hardware-software boundary for early computer science students.</p>
+      </div>
       <div class="teaching-card reveal">
         <p class="teaching-course">Embedded Systems I</p>
         <p class="teaching-audience">1st Year · Recess Semester · Computer Science</p>
@@ -1285,13 +1038,33 @@
     </div>
   </section>
 
+  <!-- COMMUNITIES -->
+  <section id="communities">
+    <p class="section-label reveal">Involvement</p>
+    <h2 class="section-title reveal">Communities</h2>
+    <div class="community-list">
+      <div class="community-item reveal">
+        <p class="community-name">IndabaX Uganda</p>
+        <p class="community-desc">Local chapter of the pan-African Deep Learning Indaba network, connecting Uganda's ML/AI research community.</p>
+      </div>
+      <div class="community-item reveal">
+        <p class="community-name">Deep Learning Indaba</p>
+        <p class="community-desc">Pan-African community strengthening machine learning and artificial intelligence research and practice across the continent.</p>
+      </div>
+      <div class="community-item reveal">
+        <p class="community-name">Data Science Africa</p>
+        <p class="community-desc">Grassroots community of data science and AI practitioners and researchers working on African challenges.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <div class="contact-section" id="contact">
     <div class="contact-inner">
       <div>
         <p class="section-label reveal">Get in Touch</p>
         <h2 class="section-title reveal" style="margin-bottom:1rem;">Let's Connect</h2>
-        <p class="reveal" style="font-family:var(--serif);font-style:italic;font-size:0.95rem;color:var(--text2);line-height:1.7;max-width:380px;">
+        <p class="contact-intro reveal">
           Open to research collaborations, visiting fellowships, industrial consulting, and conversations around edge AI and environmental telemetry.
         </p>
       </div>
@@ -1323,7 +1096,7 @@
 
 <footer>
   <p>Joel Tibabwetiza Muhanguzi · Kampala, Uganda</p>
-  <p><span>Built for GitHub Pages</span> · 2026</p>
+  <p>Built for GitHub Pages · 2026</p>
 </footer>
 
 <script>
@@ -1331,17 +1104,16 @@
   const root = document.documentElement;
   const btn = document.getElementById('themeToggle');
   const userPref = localStorage.getItem('theme');
-  const systemPrefLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-  
-  if (userPref === 'light' || (!userPref && systemPrefLight)) {
-    root.setAttribute('data-theme', 'light');
+
+  if (userPref === 'dark') {
+    root.setAttribute('data-theme', 'dark');
   }
 
   btn.addEventListener('click', () => {
-    const isLight = root.getAttribute('data-theme') === 'light';
-    const next = isLight ? 'dark' : 'light';
-    if (next === 'light') {
-      root.setAttribute('data-theme', 'light');
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    const next = isDark ? 'light' : 'dark';
+    if (next === 'dark') {
+      root.setAttribute('data-theme', 'dark');
     } else {
       root.removeAttribute('data-theme');
     }
@@ -1364,7 +1136,7 @@
       if (entry.isIntersecting) {
         setTimeout(() => {
           entry.target.classList.add('visible');
-        }, (entry.target.dataset.delay || 0) * 60);
+        }, (entry.target.dataset.delay || 0) * 40);
         observer.unobserve(entry.target);
       }
     });
